@@ -1,5 +1,8 @@
 package com.textrecog;
 
+
+import cl.json.RNSharePackage;
+import cl.json.ShareApplication;
 import com.rnfs.RNFSPackage;
 import android.app.Application;
 import com.facebook.react.PackageList;
@@ -26,7 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
       // Packages that cannot be autolinked yet can be added manually here, for
       // example:
       // packages.add(new MyReactNativePackage());
-//      packages.add(new RNFSPackage()); // <---------- add package
+    //  packages.add(new RNSharePackage()); // <---------- add package
       return packages;
     }
 

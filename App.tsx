@@ -32,11 +32,30 @@ import Basic from './src/examples/basic';
 import Advanced from './src/examples/advanced';
 import Hooks from './src/examples/hooks';
 import JoinChannelVideoScreen from './src/container/JoinVideoScreen';
+import Drawing from './src/container/SkiaDrawingBoard';
+import DrawingScreen from './src/container/DrawingScreen/DrawingScreen';
 
 const Stack = createStackNavigator();
 
-const DATA = [Basic, Advanced, Hooks];
+// const DATA = [Basic, Advanced, Hooks];
 
+const DATA = [{
+  title: 'Basic',
+  data: [
+    {
+      name: 'JoinChannelVideoScreen',
+      component: JoinChannelVideoScreen,
+    },
+    {
+      name: 'DrawingBoardScreen',
+      component: Drawing,
+    },
+    {
+      name: 'DrawingScreen',
+      component: DrawingScreen,
+    },
+  ],
+}]
 const App = () => {
   const [version, setVersion] = useState<SDKBuildInfo>({});
 
@@ -59,16 +78,15 @@ const App = () => {
         }}
       >
         <Stack.Navigator screenOptions={{ gestureEnabled: false }}>
-          {/* <Stack.Screen name={'APIExample'} component={Home} /> */}
-          {/* {DATA.map((value) =>
+          <Stack.Screen name={'APIExample'} component={Home} />
+          {DATA.map((value) =>
             value.data.map(({ name, component }) =>
               component ? (
                 // @ts-ignore
                 <Stack.Screen name={name} component={component} />
               ) : undefined
             )
-          )} */}
-          <Stack.Screen name={'JoinChannelVideoScreen'} component={JoinChannelVideoScreen} />
+          )}
         </Stack.Navigator>
 
       </SafeAreaView>
