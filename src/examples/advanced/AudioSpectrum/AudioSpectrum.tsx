@@ -9,7 +9,6 @@ import {
   IRtcEngineEventHandler,
   UserAudioSpectrumInfo,
 } from 'react-native-agora';
-import { LineChart } from 'react-native-chart-kit';
 
 import Config from '../../../config/agora.config';
 
@@ -27,8 +26,7 @@ interface State extends BaseAudioComponentState {
 
 export default class AudioSpectrum
   extends BaseComponent<{}, State>
-  implements IRtcEngineEventHandler, IAudioSpectrumObserver
-{
+  implements IRtcEngineEventHandler, IAudioSpectrumObserver {
   protected createState(): State {
     return {
       appId: Config.appId,
@@ -180,31 +178,9 @@ export default class AudioSpectrum
           keyboardType={
             Platform.OS === 'android' ? 'numeric' : 'numbers-and-punctuation'
           }
-          placeholder={`intervalInMS (defaults: ${
-            this.createState().intervalInMS
-          })`}
+          placeholder={`intervalInMS (defaults: ${this.createState().intervalInMS
+            })`}
         />
-        {enableAudioSpectrumMonitor && audioSpectrumData.length > 0 ? (
-          <>
-            <LineChart
-              data={{
-                labels: [],
-                datasets: [{ data: audioSpectrumData }],
-              }}
-              width={Dimensions.get('window').width}
-              height={220}
-              withDots={false}
-              withShadow={false}
-              withInnerLines={false}
-              fromZero
-              chartConfig={{
-                strokeWidth: 1,
-                color: () => 'white',
-              }}
-              bezier
-            />
-          </>
-        ) : undefined}
       </>
     );
   }
@@ -214,9 +190,8 @@ export default class AudioSpectrum
     return (
       <>
         <AgoraButton
-          title={`${
-            enableAudioSpectrumMonitor ? 'disable' : 'enable'
-          } Audio Spectrum Monitor`}
+          title={`${enableAudioSpectrumMonitor ? 'disable' : 'enable'
+            } Audio Spectrum Monitor`}
           onPress={
             enableAudioSpectrumMonitor
               ? this.disableAudioSpectrumMonitor

@@ -20,7 +20,6 @@ import useDrawingStore, { CurrentPath } from './store';
 import Header from './components/header';
 import history from './history';
 import Toolbar from './components/toolbar';
-import { Button } from '@rneui/base';
 
 const Drawing = () => {
   const touchState = useRef(false);

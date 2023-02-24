@@ -38,7 +38,6 @@ import {
 } from '../../components/ui';
 import { enumToItems } from '../../utils';
 import { StackScreenProps } from '@react-navigation/stack';
-import { LogSink } from '../../components/LogSink';
 import { RtcSurfaceButton, RtcTextuerButton } from './components';
 
 interface State {
@@ -59,24 +58,6 @@ interface State {
   }
 }
 
-const Header = ({ getData }: { getData: () => Array<string> }) => {
-  const [visible, setVisible] = useState(false);
-
-  const toggleOverlay = () => {
-    setVisible(!visible);
-  };
-
-  return (
-    <>
-      <AgoraButton title="Logs" onPress={toggleOverlay} />
-      <LogSink
-        visible={visible}
-        data={getData()}
-        onBackdropPress={toggleOverlay}
-      />
-    </>
-  );
-};
 
 export default class JoinChannelVideo extends Component<{}, State>
   implements IRtcEngineEventHandler {
@@ -86,9 +67,6 @@ export default class JoinChannelVideo extends Component<{}, State>
   constructor(props: {} & StackScreenProps<any>) {
     super(props);
     this.state = this.createState();
-    props.navigation.setOptions({
-      headerRight: () => <Header getData={() => this._data} />,
-    });
   }
 
   componentDidMount() {

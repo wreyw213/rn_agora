@@ -25,26 +25,7 @@ import {
   AgoraTextInput,
   AgoraView,
 } from './ui';
-import { LogSink } from './LogSink';
 
-const Header = ({ getData }: { getData: () => Array<string> }) => {
-  const [visible, setVisible] = useState(false);
-
-  const toggleOverlay = () => {
-    setVisible(!visible);
-  };
-
-  return (
-    <>
-      <AgoraButton title="Logs" onPress={toggleOverlay} />
-      <LogSink
-        visible={visible}
-        data={getData()}
-        onBackdropPress={toggleOverlay}
-      />
-    </>
-  );
-};
 
 export interface BaseComponentState {
   appId: string;
@@ -81,9 +62,6 @@ export abstract class BaseComponent<
   protected constructor(props: P & StackScreenProps<{}>) {
     super(props);
     this.state = this.createState();
-    props.navigation.setOptions({
-      headerRight: () => <Header getData={() => this._data} />,
-    });
   }
 
   componentDidMount() {

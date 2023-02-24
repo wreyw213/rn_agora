@@ -1,27 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, ViewProps } from 'react-native';
+import { Button, Image, ImageProps, StyleSheet, SwitchProps, Text, TextInput, TextProps, View, ViewProps } from 'react-native';
 import PickerSelect, {
   PickerSelectProps,
   Item,
 } from 'react-native-picker-select';
 import { PickerProps } from '@react-native-picker/picker/typings/Picker';
-import {
-  Button,
-  ButtonProps,
-  DividerProps,
-  Divider,
-  InputProps,
-  Input,
-  Slider,
-  SliderProps,
-  SwitchProps,
-  Switch,
-  Text,
-  TextProps,
-  ImageProps,
-  Image,
-  lightColors,
-} from '@rneui/base';
+import { ButtonProps } from 'react-native';
+import { Slider, SliderProps } from '../Slider';
+import { Switch } from 'react-native';
+import { TextInputProps } from 'react-native';
+
 
 export const AgoraView = (props: ViewProps) => {
   return (
@@ -47,26 +35,26 @@ export const AgoraButton = (props: ButtonProps) => {
   );
 };
 
-export const AgoraDivider = (props: DividerProps) => {
+export const AgoraDivider = (props: ViewProps) => {
   return (
     <>
-      <Divider width={1} color={'grey'} {...props} />
+      <View style={{ height: 1, width: '100%', borderColor: 'grey' }} {...props} />
     </>
   );
 };
 
-export const AgoraTextInput = (props: InputProps) => {
+export const AgoraTextInput = (props: TextInputProps) => {
   const [value, setValue] = useState(props.value);
 
   useEffect(() => {
     setValue(props.value);
   }, [props.value]);
 
-  const { style, ref, ...others } = props;
+  const { style, ...others } = props;
   return (
-    <>
-      <Input
-        containerStyle={[AgoraStyle.input, style]}
+    <View style={[AgoraStyle.input, style]}>
+      <TextInput
+        style={[AgoraStyle.input, style]}
         placeholderTextColor={'gray'}
         {...others}
         onChangeText={(text) => {
@@ -75,7 +63,7 @@ export const AgoraTextInput = (props: InputProps) => {
         }}
         value={value}
       />
-    </>
+    </View>
   );
 };
 
@@ -96,7 +84,7 @@ export const AgoraSlider = (props: SliderProps & { title: string }) => {
         thumbStyle={AgoraStyle.thumb}
         {...others}
         value={value}
-        onValueChange={(v) => {
+        onValueChange={(v: any) => {
           setValue(v);
           props.onValueChange?.call(this, v);
         }}
@@ -210,6 +198,6 @@ export const AgoraStyle = StyleSheet.create({
   thumb: {
     height: 20,
     width: 20,
-    backgroundColor: lightColors.primary,
+    backgroundColor: '#FFF',
   },
 });
