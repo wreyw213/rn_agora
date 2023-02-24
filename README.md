@@ -14,20 +14,35 @@ To install this project, please follow these steps:
     your terminal:
 
   
-    ```npm install```
+```sh
+$ npm install --save
+```
 
                                 
 
-3.  Install Agora SDK by running the following command in your terminal:
+3.  Setup Agora Account and get AppKeys and Token : 
 
-   ``` npm install react-native-agora --save ```
+    Visit the [Agora Console] (https://console.agora.io/) for creating app and appId. <br/><br/>
+    See the [Api Documentation](https://docs.agora.io/en/api-reference) for usage details and available methods.
+
                                                  
    > Note: Make sure you have Agora credentials before installing Agora
     > SDK.
 
-4.  Run the project using the following command:
+4.  Run the project using the following command
 
-    ``` react-native run-android ```
+    #### Android
+    ```sh
+    $react-native run-android 
+    ```
+    
+    #### IOS 
+    
+     ```sh
+     $npm run pod
+     
+     $react-native run-android 
+    ```
                                             
                                         
     > Note: Make sure you have configured the necessary environment for
